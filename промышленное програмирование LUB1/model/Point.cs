@@ -13,5 +13,10 @@ namespace промышленное_програмирование_LUB1.model
 
         public Point(double x, double y) { X = x; Y = y; }
 
+        public double distance(Point second)
+        {
+            return Math.Sqrt(Math.Pow((X - second.X), 2) + Math.Pow((Y - second.Y), 2));
+        }
+        public override string ToString() => $"({X}, {Y})";
     }
 }

@@ -3,7 +3,7 @@
     abstract class Figure
     {
         public abstract Rectangle framing_rectangle();
-        public abstract double perimeter();
+        public abstract double perimeter { get; }
         public abstract double square();
     }
 }

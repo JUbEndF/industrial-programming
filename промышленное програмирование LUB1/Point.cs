@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace промышленное_програмирование_LUB1.model
 {
-    struct Point
+    public struct Point
     {
         public double X { get; set; }
         public double Y { get; set; }

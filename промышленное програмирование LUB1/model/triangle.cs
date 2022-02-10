@@ -23,15 +23,15 @@ namespace промышленное_програмирование_LUB1.model
             new Point(Arr_vertexes.Max(arr_vertexes => arr_vertexes.X), 
                 Arr_vertexes.Max(arr_vertexes => arr_vertexes.Y)));
 
-        public override double perimeter => A + B + C;
+        public override double perimeter() => A + B + C;
 
         public override double square()
         {
-            var per = perimeter/2;
+            var per = perimeter()/2;
             return Math.Sqrt(per * (per - A) *(per - B) *(per - C));
         }
 
-        public override string ToString() => $"A{A}, B{B}, C{C}";
+        public override string ToString() => $"Triangle: A{A}, B{B}, C{C}";
 
         public override bool Equals(object obj)
         {

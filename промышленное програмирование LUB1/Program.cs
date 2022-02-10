@@ -6,7 +6,7 @@ namespace промышленное_програмирование_LUB1
     {
         static void Main(string[] args)
         {
-
+            
         }
     }
 }

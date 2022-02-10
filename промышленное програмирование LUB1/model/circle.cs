@@ -24,5 +24,22 @@ namespace промышленное_програмирование_LUB1.model
         public override double square() => Math.PI * Math.Pow(Radius, 2);
 
         public override string ToString() => $"Center{Center}, radius = {Radius}";
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Circle);
+        }
+
+        public bool Equals(Circle other)
+        {
+            return other != null &&
+                   Radius == other.Radius &&
+                   Center == other.Center;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine<Point, Double>(Center, Radius);
+        }
     }
 }

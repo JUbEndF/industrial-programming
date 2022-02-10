@@ -28,5 +28,22 @@ namespace промышленное_програмирование_LUB1.model
         public override double square() => A * B;
 
         public override string ToString() => $"{First}&{Second}: a = {A}, b = {B}";
+
+        public override bool Equals(object obj)
+        {
+            return Equals(obj as Rectangle);
+        }
+
+        public bool Equals(Rectangle other)
+        {
+            return other != null &&
+                   A == other.A &&
+                   B == other.B;
+        }
+
+        public override int GetHashCode()
+        {
+            return HashCode.Combine<Point, Point>(First, Second);
+        }
     }
 }

@@ -8,9 +8,9 @@ namespace промышленное_програмирование_LUB1.model
 {
     public class Rectangle : Figure
     {
-        private Point First { get; set; }
+        private Point First { get; init; }
 
-        private Point Second { get; set; }
+        private Point Second { get; init; }
 
         public Rectangle(Point point1, Point point2)
         {
@@ -29,16 +29,12 @@ namespace промышленное_програмирование_LUB1.model
 
         public override string ToString() => $"Rectangle: {First}&{Second}; a = {A}, b = {B}";
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as Rectangle);
-        }
-
-        public bool Equals(Rectangle other)
-        {
-            return other != null &&
-                   A == other.A &&
-                   B == other.B;
+            if (obj is not Rectangle other)
+                return false;
+            return A == other.A &&
+                    B == other.B;
         }
 
         public override int GetHashCode()

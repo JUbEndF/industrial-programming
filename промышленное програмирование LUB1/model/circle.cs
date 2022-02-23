@@ -8,8 +8,8 @@ namespace промышленное_програмирование_LUB1.model
 {
     class Circle : Figure
     {
-        private double Radius { get; set; }
-        private Point Center { get; set; }
+        private double Radius { get; init; }
+        private Point Center { get; init; }
 
         public Circle(Point a, double r)
         {
@@ -26,21 +26,25 @@ namespace промышленное_програмирование_LUB1.model
 
         public override string ToString() => $"Circle: Center{Center}, radius = {Radius}";
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as Circle);
+            if (obj is not Circle other)
+                return false;
+            return Radius == other.Radius &&
+                   Center == other.Center;
+            //return Equals(obj as Circle);
         }
 
-        public bool Equals(Circle other)
-        {
-            return other != null &&
-                   Radius == other.Radius &&
-                   Center == other.Center;
-        }
+        //public bool Equals(Circle other)
+        //{
+        //    return other != null &&
+        //           Radius == other.Radius &&
+        //           Center == other.Center;
+        //}
 
         public override int GetHashCode()
         {
-            return HashCode.Combine<Point, Double>(Center, Radius);
+            return HashCode.Combine(Center, Radius) ;
         }
     }
 }

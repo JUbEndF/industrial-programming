@@ -7,7 +7,7 @@ namespace промышленное_програмирование_LUB1.model
     class Triangle : Figure
     {
 
-        public Point[] Arr_vertexes { get; set; }
+        public Point[] Arr_vertexes { get; init; }
 
         public Triangle(Point a, Point b, Point c)
         {
@@ -33,15 +33,11 @@ namespace промышленное_програмирование_LUB1.model
 
         public override string ToString() => $"Triangle: A{A}, B{B}, C{C}";
 
-        public override bool Equals(object obj)
+        public override bool Equals(object? obj)
         {
-            return Equals(obj as Triangle);
-        }
-
-        public bool Equals(Triangle other)
-        {
-            return other != null &&
-                A == other.A &&
+            if (obj is not Triangle other)
+                return false;
+            return A == other.A &&
                 B == other.B &&
                 C == other.C;
         }

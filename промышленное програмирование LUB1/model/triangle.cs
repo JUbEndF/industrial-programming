@@ -31,7 +31,7 @@ namespace промышленное_програмирование_LUB1.model
             return Math.Sqrt(per * (per - A) *(per - B) *(per - C));
         }
 
-        public override string ToString() => $"Triangle: A{A}, B{B}, C{C}";
+        public override string ToString() => $"Triangle: A:{A}, B:{B}, C:{C}";
 
         public override bool Equals(object? obj)
         {
@@ -41,6 +41,7 @@ namespace промышленное_програмирование_LUB1.model
                 B == other.B &&
                 C == other.C;
         }
+
 
 
         public override int GetHashCode()

@@ -17,7 +17,7 @@ namespace промышленное_програмирование_LUB1.model
         {
             return Math.Sqrt(Math.Pow((X - second.X), 2) + Math.Pow((Y - second.Y), 2));
         }
-        public override string ToString() => $"({X}, {Y})";
+        public override string ToString() => "(" + X + ", " + Y + ")";
         public static bool operator !=(Point left, Point right)
         {
             return left.X != right.X || 

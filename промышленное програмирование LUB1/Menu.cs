@@ -7,23 +7,37 @@ using промышленное_програмирование_LUB1.model;
 
 namespace промышленное_програмирование_LUB1
 {
-    public class Menu
+    public class Menu<T> where T: Figure
     {
-        private List<Figure> Figures; 
+        private List<T> Figures = new List<T>();
 
-        public void Add(int index, Figure obj)
+        public void Add(int index, T obj)
         {
-            Figures.Insert(index, obj);
+            if (index >= 0 && index < Figures.Count)
+                Figures.Insert(index, obj);
+        }
+
+        public void Add(T obj)
+        {
+            Figures.Add(obj);
         }
 
         public void Remuve(int index)
         {
-            Figures.RemoveAt(index);
+            if(index >= 0 && index < Figures.Count)
+                Figures.RemoveAt(index);
         }
 
         public void Remuve()
         {
             Figures.Clear();
+        }
+
+        public void Comparison(int index_1, int index_2)
+        {
+            if (index_1 < 0 || index_2 < 0 || index_1 > Figures.Count || index_2 > Figures.Count)
+                Console.WriteLine("Wrong index");
+            Console.WriteLine($"{Figures[index_1]} == {Figures[index_2]}? {Figures[index_1].Equals(Figures[index_2])}");
         }
 
         public void Print()

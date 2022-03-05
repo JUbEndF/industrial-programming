@@ -4,17 +4,22 @@ using System.Collections;
 
 namespace промышленное_програмирование_LUB1.model
 {
-    class Triangle : Figure
+    public class Triangle : Figure
     {
 
         public Point[] Arr_vertexes { get; init; }
+
+        public Triangle()
+        {
+
+        }
 
         public Triangle(Point a, Point b, Point c)
         {
             Arr_vertexes = new Point[3] { a, b, c };
         }
 
-        private double A => Arr_vertexes[0].distance(Arr_vertexes[1]);
+        double A => Arr_vertexes[0].distance(Arr_vertexes[1]);
         private double B => Arr_vertexes[0].distance(Arr_vertexes[2]);
         private double C => Arr_vertexes[2].distance(Arr_vertexes[1]);
 
@@ -31,7 +36,7 @@ namespace промышленное_програмирование_LUB1.model
             return Math.Sqrt(per * (per - A) *(per - B) *(per - C));
         }
 
-        public override string ToString() => $"Triangle: A:{A}, B:{B}, C:{C}";
+        public override string ToString() => $"{A}, {B}, {C}";
 
         public override bool Equals(object? obj)
         {
@@ -42,7 +47,7 @@ namespace промышленное_програмирование_LUB1.model
                 C == other.C;
         }
 
-
+       
 
         public override int GetHashCode()
         {

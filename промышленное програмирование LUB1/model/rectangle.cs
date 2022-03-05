@@ -8,9 +8,13 @@ namespace промышленное_програмирование_LUB1.model
 {
     public class Rectangle : Figure
     {
-        private Point First { get; init; }
 
-        private Point Second { get; init; }
+        public Point First { get; init; }
+
+        public Point Second { get; init; }
+
+        public Rectangle()
+        {        }
 
         public Rectangle(Point point1, Point point2)
         {
@@ -27,7 +31,7 @@ namespace промышленное_програмирование_LUB1.model
 
         public override double square() => A * B;
 
-        public override string ToString() => $"Rectangle: {First}&{Second}; a = {A}, b = {B}";
+        public override string ToString() => $"{First}&{Second};{A}, {B}";
 
         public override bool Equals(object? obj)
         {

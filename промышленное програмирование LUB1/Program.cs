@@ -1,30 +1,116 @@
-﻿using System;
+﻿using Lab1.Infrastructure;
+using Microsoft.Extensions.DependencyInjection;
+using Spectre.Console;
+using Spectre.Console.Cli;
+using System;
+using System.Xml;
+using System.Xml.Serialization;
+using промышленное_програмирование_LUB1.Command;
 using промышленное_програмирование_LUB1.model;
 namespace промышленное_програмирование_LUB1
 {
     class Program
     {
+
+        // Command
         static void Main(string[] args)
         {
-            var figure = new Menu<Figure>();
-            figure.Add(new Triangle(
-                new Point(1,2),
-                new Point(0, 6),
-                new Point(3,2)
-                ));
-            figure.Add(new Triangle(
-                new Point(1, 9),
-                new Point(5, 6),
-                new Point(4, 7)
-                ));
-            figure.Add(new Rectangle(
-                new Point(1, 2),
-                new Point(0, 6)
-                ));
+            var serviseCollection = new ServiceCollection();
 
-            figure.Print();
+            serviseCollection.AddSingleton<IMenu, Menu>();
 
-            figure.Comparison(0, 2);
+            var registr = new TypeRegistrar(serviseCollection);
+            var app = new CommandApp(registr);
+
+            app.Configure(config =>
+            {
+                config.AddCommand<AddFigureCommand>("add");
+                config.AddCommand<PrintFigureCommand>("print");
+            });
+            app.Run(args);
+
+
+
+
+            /* //Menu
+            var figure = new Menu();
+            do
+            {
+                var str = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                .Title("[green]Меню: [/]")
+                .AddChoices("cоздание объекта",
+                "сравнение двух объектов по указанным индексам",
+                "вывод контейнера на экран",
+                "Вывести общую площадь всех фигур",
+                "Площадь фигуры по индуксу",
+                "Периметр фигуры по индуксу",
+                "удаление объекта из коллекции по индексу",
+                "удаление всех объектов из коллекции",
+                "Выйти"));
+                switch (str)
+                {
+                    case "cоздание объекта":
+                        int index = figure.Count() != 0 ? figure.get_index(1, figure.Count() + 1) - 1 : 0;
+                        figure.create_new_figure(index);
+                        Console.ReadKey();
+                        break;
+                    case "удаление объекта из коллекции по индексу":
+                        if (figure.Count() == 0)
+                        {
+                            AnsiConsole.Clear();
+                            AnsiConsole.WriteLine("Колекция пуста");
+                            break;
+                        }
+                        figure.Remuve_element(figure.get_index(1, figure.Count()) - 1);
+                        Console.ReadKey();
+                        break;
+                    case "удаление всех объектов из коллекции":
+                        if (figure.Count() == 0)
+                        {
+                            AnsiConsole.Clear();
+                            AnsiConsole.WriteLine("Колекция пуста");
+                            break;
+                        }
+                        figure.Remuve();
+                        Console.ReadKey();
+                        break;
+                    case "сравнение двух объектов по указанным индексам":
+                        if (figure.Count() < 2)
+                        {
+                            AnsiConsole.Clear();
+                            AnsiConsole.WriteLine("Сравнение невозможно!");
+                            break;
+                        }
+                        figure.Comparison(figure.get_index(1, figure.Count()) - 1, figure.get_index(1, figure.Count()) - 1);
+                        Console.ReadKey();
+                        break;
+                    case "вывод контейнера на экран":
+                        figure.Print();
+                        Console.ReadKey();
+                        break;
+                    case "Вывести общую площадь всех фигур":
+                        figure.Print_Squere();
+                        Console.ReadKey();
+                        break;
+                    case "Периметр фигуры по индуксу":
+                        index = figure.get_index(1, figure.Count()) - 1;
+                        figure.PrintElement(index);
+                        figure.Squere(index);
+                        Console.ReadKey();
+                        return;
+                    case "Площадь фигуры по индуксу":
+                        index = figure.get_index(1, figure.Count()) - 1;
+                        figure.PrintElement(index);
+                        figure.Squere(index);
+                        Console.ReadKey();
+                        Console.ReadKey();
+                        return;
+                    case "Выйти":
+                        figure.Serialize();
+                        return;
+                }
+                AnsiConsole.Clear();
+            } while (true);*/
         }
     }
 }

@@ -6,10 +6,15 @@ using System.Threading.Tasks;
 
 namespace промышленное_програмирование_LUB1.model
 {
-    class Circle : Figure
+    public class Circle : Figure
     {
-        private double Radius { get; init; }
-        private Point Center { get; init; }
+        public double Radius { get; init; }
+        public Point Center { get; init; }
+
+        public Circle()
+        {
+
+        }
 
         public Circle(Point a, double r)
         {
@@ -24,7 +29,7 @@ namespace промышленное_програмирование_LUB1.model
 
         public override double square() => Math.PI * Math.Pow(Radius, 2);
 
-        public override string ToString() => $"Circle: Center{Center}, radius = {Radius}";
+        public override string ToString() => $"{Center}, {Radius}";
 
         public override bool Equals(object? obj)
         {
@@ -32,15 +37,7 @@ namespace промышленное_програмирование_LUB1.model
                 return false;
             return Radius == other.Radius &&
                    Center == other.Center;
-            //return Equals(obj as Circle);
         }
-
-        //public bool Equals(Circle other)
-        //{
-        //    return other != null &&
-        //           Radius == other.Radius &&
-        //           Center == other.Center;
-        //}
 
         public override int GetHashCode()
         {

@@ -1,5 +1,9 @@
-﻿namespace промышленное_програмирование_LUB1.model
+﻿using System.Xml.Serialization;
+namespace промышленное_програмирование_LUB1.model
 {
+    [XmlInclude(typeof(Circle))]
+    [XmlInclude(typeof(Rectangle))]
+    [XmlInclude(typeof(Triangle))]
     public abstract class Figure
     {
         public abstract Rectangle framing_rectangle();

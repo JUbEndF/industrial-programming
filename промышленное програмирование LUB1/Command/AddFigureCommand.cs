@@ -58,7 +58,7 @@ namespace промышленное_програмирование_LUB1.Command
                     break;
             }
             _figure.Serialize();
-            return 1;
+            return 0;
 
         }
 

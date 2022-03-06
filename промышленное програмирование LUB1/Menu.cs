@@ -185,5 +185,10 @@ namespace промышленное_програмирование_LUB1
         {
             return this.Figures;
         }
+
+        public Rectangle get_framing_rectangle(int index)
+        {
+            return Figures[index].framing_rectangle();
+        }
     }
 }

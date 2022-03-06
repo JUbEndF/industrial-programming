@@ -23,6 +23,8 @@ namespace промышленное_програмирование_LUB1
 
         void Remuve();
 
+        Rectangle get_framing_rectangle(int index);
+
         void Comparison(int index_1, int index_2);
 
         void Print_Squere();

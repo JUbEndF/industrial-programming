@@ -36,7 +36,7 @@ namespace промышленное_програмирование_LUB1.Command
                 }
             }
             AnsiConsole.Write(table);
-            return 1;
+            return 0;
         }
 
         public class PrintFigureSettings:CommandSettings

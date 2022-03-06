@@ -168,7 +168,7 @@ namespace промышленное_програмирование_LUB1
         public void Serialize()
         {
             var xml = new XmlSerializer(typeof(List<Figure>));
-            using (var filestream = new FileStream("C:\\Users\\Георгий\\source\\repos\\промышленное програмирование LUB1\\промышленное програмирование LUB1\\bin\\Debug\\net5.0\\figure.xml", FileMode.Create))
+            using (var filestream = new FileStream("figure.xml", FileMode.Create))
             {
                 xml.Serialize(filestream, Figures);
             }
@@ -176,8 +176,9 @@ namespace промышленное_програмирование_LUB1
 
         public void Deserialize()
         {
+            if (!File.Exists("figure.xml")) return;
             var xml = new XmlSerializer(typeof(List<Figure>));
-            using var filestream = File.OpenRead("C:\\Users\\Георгий\\source\\repos\\промышленное програмирование LUB1\\промышленное програмирование LUB1\\bin\\Debug\\net5.0\\figure.xml");
+            using var filestream = File.OpenRead("figure.xml");
             Figures = (List<Figure>)xml.Deserialize(filestream);
         }
 
